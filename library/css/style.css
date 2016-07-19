@@ -1202,6 +1202,35 @@ This are the mobile styles. It's what people see on their phones. If
 you set a great foundation, you won't need to add too many styles in
 the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
+/*=============================================>>>>>
+= Header Partial Style =
+===============================================>>>>>*/
+.header {
+  background-color: #2980b9; }
+
+#logo {
+  margin: 0.75em 0; }
+  #logo a {
+    color: #fff; }
+
+/*=============================================>>>>>
+= Footer Partial Style =
+===============================================>>>>>*/
+.footer {
+  clear: both;
+  background-color: #2980b9;
+  color: #f8f9fa; }
+
+/*
+	if you checked out the link above:
+	http://www.alistapart.com/articles/organizing-mobile/
+	you'll want to style the footer nav
+	a bit more in-depth. Remember to keep
+	it simple because you'll have to
+	override these styles for the desktop
+	view.
+	*/
+/* end .footer-links */
 /******************************************************************
 Site Name:
 Author:
@@ -1325,17 +1354,6 @@ h5, .h5 {
   line-height: 2.09em;
   text-transform: uppercase;
   letter-spacing: 2px; }
-
-/*********************
-HEADER STYLES
-*********************/
-.header {
-  background-color: #323944; }
-
-#logo {
-  margin: 0.75em 0; }
-  #logo a {
-    color: #fff; }
 
 /*********************
 NAVIGATION STYLES
@@ -1703,24 +1721,6 @@ SIDEBARS & ASIDES
   border-radius: 2px;
   margin-bottom: 1.5em; }
 
-/*********************
-FOOTER STYLES
-*********************/
-.footer {
-  clear: both;
-  background-color: #323944;
-  color: #f8f9fa; }
-
-/*
-	if you checked out the link above:
-	http://www.alistapart.com/articles/organizing-mobile/
-	you'll want to style the footer nav
-	a bit more in-depth. Remember to keep
-	it simple because you'll have to
-	override these styles for the desktop
-	view.
-	*/
-/* end .footer-links */
 /*********************
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's
