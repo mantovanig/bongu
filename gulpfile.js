@@ -1,9 +1,7 @@
 var gulp = require( 'gulp' ),
   plumber = require( 'gulp-plumber' ),
   watch = require( 'gulp-watch' ),
-  livereload = require( 'gulp-livereload' ),
   minifycss = require( 'gulp-minify-css' ),
-  uglify = require( 'gulp-uglify' ),
   rename = require( 'gulp-rename' ),
   notify = require( 'gulp-notify' ),
   include = require( 'gulp-include' ),
@@ -23,6 +21,22 @@ gulp.task( 'build-svg', function() {
     .pipe(gulp.dest('./library/css/icons'));
 } );
 
+// Sass lint
+gulp.task('lint-scss', function lintCssTask() {
+  const gulpStylelint = require('gulp-stylelint');
+
+  return gulp
+    .src(['./library/scss/*.scss'])
+    .pipe(gulpStylelint({
+        syntax: 'scss',
+        reporters: [
+            {
+                formatter: 'string', console: true
+            }
+      ]
+    }));
+});
+
 gulp.task( 'scss', function() {
   return gulp.src( './library/scss/*.scss' )
     .pipe( plumber( { errorHandler: onError } ) )
@@ -36,16 +50,12 @@ gulp.task( 'scss', function() {
         message: function(file) {
           return "SASS compiled!";
         }
-      }))
-    .pipe( livereload() );
+      }));
 } );
 
 gulp.task( 'watch', function() {
-  livereload.listen();
   gulp.watch( './library/scss/**/*.scss', [ 'scss' ] );
-  gulp.watch( './**/*.php' ).on( 'change', function( file ) {
-    livereload.changed( file );
-  } );
+  // gulp.watch( './**/*.php' ).on( 'change', function( file ) { } );
 } );
 
 gulp.task( 'default', ['build-svg', 'scss', 'watch' ], function() {
