@@ -59,7 +59,8 @@ textarea,
   &:focus,
   &:active {
     background-color: lighten($gray, 4%);
-    outline: none; 
+    outline: none;
+    
   } // end hover or focus
 
   // error notification
@@ -124,5 +125,3 @@ select {
   background-repeat: no-repeat;
   background-position: 97.5% center;
 }
-
-

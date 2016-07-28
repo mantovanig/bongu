@@ -26,7 +26,7 @@ gulp.task('lint-scss', function lintCssTask() {
   const gulpStylelint = require('gulp-stylelint');
 
   return gulp
-    .src(['./library/scss/*.scss'])
+    .src(['./library/scss/**/*.scss'])
     .pipe(gulpStylelint({
         syntax: 'scss',
         reporters: [
@@ -54,10 +54,10 @@ gulp.task( 'scss', function() {
 } );
 
 gulp.task( 'watch', function() {
-  gulp.watch( './library/scss/**/*.scss', [ 'scss' ] );
+  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss' ] );
   // gulp.watch( './**/*.php' ).on( 'change', function( file ) { } );
 } );
 
-gulp.task( 'default', ['build-svg', 'scss', 'watch' ], function() {
+gulp.task( 'default', ['build-svg', 'lint-scss','scss', 'watch' ], function() {
 
 } );
