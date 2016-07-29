@@ -124,15 +124,21 @@ function bones_scripts_and_styles() {
 
 	$env = BONGU_ENV;
 
+	
+	$template = basename( get_page_template() );
+	$pattern = '/template-(.*)\./';
+	preg_match($pattern, $template, $matches);
+
+
   if (!is_admin()) {
 
+		// modernizr (without media query polyfill)
+		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+
+		// register icons stylesheet
+		wp_register_style( 'svg', get_stylesheet_directory_uri() . '/library/css/icons/svg.css', array(), '', 'all' );
+
 		if($env == 'prod') {
-
-				// modernizr (without media query polyfill)
-				wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
-
-				// register icons stylesheet
-				wp_register_style( 'svg', get_stylesheet_directory_uri() . '/library/css/icons/svg.css', array(), '', 'all' );
 
 				// register main stylesheet
 				wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/min/style.min.css', array(), '', 'all' );
@@ -141,12 +147,6 @@ function bones_scripts_and_styles() {
 				wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/min/ie.min.css', array(), '' );
 
 		} elseif($env == 'dev') {
-
-				// modernizr (without media query polyfill)
-				wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
-
-				// register icons stylesheet
-				wp_register_style( 'svg', get_stylesheet_directory_uri() . '/library/css/icons/svg.css', array(), '', 'all' );
 
 				// register main stylesheet
 				wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
@@ -169,7 +169,7 @@ function bones_scripts_and_styles() {
 		wp_enqueue_style( 'svg' );
 		wp_enqueue_style( 'bones-stylesheet' );
 		wp_enqueue_style( 'bones-ie-only' );
-		
+
 		$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
 		/*
