@@ -1,12 +1,13 @@
 var gulp = require( 'gulp' ),
-  plumber = require( 'gulp-plumber' ),
-  watch = require( 'gulp-watch' ),
-  minifycss = require( 'gulp-minify-css' ),
-  rename = require( 'gulp-rename' ),
-  notify = require( 'gulp-notify' ),
-  include = require( 'gulp-include' ),
-  svgToSss = require('gulp-svg-to-css'),
-  sass = require( 'gulp-sass' );
+    plumber = require( 'gulp-plumber' ),
+    watch = require( 'gulp-watch' ),
+    minifycss = require( 'gulp-minify-css' ),
+    rename = require( 'gulp-rename' ),
+    notify = require( 'gulp-notify' ),
+    include = require( 'gulp-include' ),
+    svgToSss = require('gulp-svg-to-css'),
+    sass = require( 'gulp-sass' ),
+    sourcemaps = require('gulp-sourcemaps');
 
   var onError = function( err ) {
     console.log( 'An error occurred:', err.message );
@@ -41,10 +42,8 @@ gulp.task( 'scss', function() {
   return gulp.src( './library/scss/*.scss' )
     .pipe( plumber( { errorHandler: onError } ) )
     .pipe( sass() )
+    .pipe(sourcemaps.write('./maps/'))
     .pipe( gulp.dest( './library/css/' ) )
-    .pipe( minifycss() )
-    .pipe( rename( { suffix: '.min' } ) )
-    .pipe( gulp.dest( './library/css/min/' ) )
     .pipe(notify({
         onLast: true,
         message: function(file) {
@@ -53,11 +52,18 @@ gulp.task( 'scss', function() {
       }));
 } );
 
+gulp.task( 'scss-minify', function() {
+    return gulp.src( './library/css/*.css' )
+      .pipe( minifycss() )
+      .pipe( rename( { suffix: '.min' } ) )
+      .pipe( gulp.dest( './library/css/min/' ) )
+} );
+
 gulp.task( 'watch', function() {
-  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss' ] );
+  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss', 'scss-minify' ] );
   // gulp.watch( './**/*.php' ).on( 'change', function( file ) { } );
 } );
 
-gulp.task( 'default', ['build-svg', 'lint-scss','scss', 'watch' ], function() {
+gulp.task( 'default', ['build-svg', 'lint-scss', 'scss', 'scss-minify', 'watch' ], function() {
 
 } );
