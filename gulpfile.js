@@ -39,7 +39,7 @@ gulp.task('lint-scss', function lintCssTask() {
 });
 
 gulp.task( 'scss', function() {
-  return gulp.src( './library/scss/*.scss' )
+  return gulp.src('./library/scss/*.scss')
     .pipe( plumber( { errorHandler: onError } ) )
     .pipe( sass() )
     .pipe(sourcemaps.write('./maps/'))
@@ -47,7 +47,21 @@ gulp.task( 'scss', function() {
     .pipe(notify({
         onLast: true,
         message: function(file) {
-          return "SASS compiled!";
+          return "Main SASS compiled!";
+        }
+      }));
+} );
+
+gulp.task( 'scss-template', function() {
+  return gulp.src('./library/scss/template/*.scss')
+    .pipe( plumber( { errorHandler: onError } ) )
+    .pipe( sass() )
+    .pipe(sourcemaps.write('./maps/'))
+    .pipe( gulp.dest( './library/css/template/' ) )
+    .pipe(notify({
+        onLast: true,
+        message: function(file) {
+          return "Template SASS compiled!";
         }
       }));
 } );
@@ -60,10 +74,10 @@ gulp.task( 'scss-minify', function() {
 } );
 
 gulp.task( 'watch', function() {
-  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss', 'scss-minify' ] );
+  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss', 'scss-template', 'scss-minify' ] );
   // gulp.watch( './**/*.php' ).on( 'change', function( file ) { } );
 } );
 
-gulp.task( 'default', ['build-svg', 'lint-scss', 'scss', 'scss-minify', 'watch' ], function() {
+gulp.task( 'default', ['build-svg', 'lint-scss', 'scss', 'scss-template', 'scss-minify', 'watch' ], function() {
 
 } );
