@@ -7,7 +7,8 @@ var gulp = require( 'gulp' ),
     include = require( 'gulp-include' ),
     svgToSss = require('gulp-svg-to-css'),
     sass = require( 'gulp-sass' ),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    autoprefixer = require('gulp-autoprefixer');
 
   var onError = function( err ) {
     console.log( 'An error occurred:', err.message );
@@ -15,6 +16,10 @@ var gulp = require( 'gulp' ),
     this.emit( 'end' );
   }
 
+  // ... variables
+  var autoprefixerOptions = {
+    browsers: ['last 2 versions', '> 1%', 'Firefox ESR']
+  };
 
 gulp.task( 'build-svg', function() {
   return gulp.src('**/*.svg', {cwd: './library/svg'})
@@ -43,6 +48,7 @@ gulp.task( 'scss', function() {
     .pipe( plumber( { errorHandler: onError } ) )
     .pipe( sass() )
     .pipe(sourcemaps.write('./maps/'))
+    .pipe(autoprefixer(autoprefixerOptions))
     .pipe( gulp.dest( './library/css/' ) )
     .pipe(notify({
         onLast: true,
@@ -57,6 +63,7 @@ gulp.task( 'scss-template', function() {
     .pipe( plumber( { errorHandler: onError } ) )
     .pipe( sass() )
     .pipe(sourcemaps.write('./maps/'))
+    .pipe(autoprefixer(autoprefixerOptions))
     .pipe( gulp.dest( './library/css/template/' ) )
     .pipe(notify({
         onLast: true,

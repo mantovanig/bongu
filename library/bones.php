@@ -124,11 +124,9 @@ function bones_scripts_and_styles() {
 
 	$env = BONGU_ENV;
 
-
 	$template = basename( get_page_template() );
 	$pattern = '/template-(.*)\./';
 	preg_match($pattern, $template, $matches);
-
 	$slugTemplate = $matches[1];
 
   if (!is_admin()) {
@@ -152,9 +150,8 @@ function bones_scripts_and_styles() {
 				// register main stylesheet
 				wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 
-				$toEnqueue = [];
-
 				// partial template
+				$toEnqueue = [];
 				if($slugTemplate) {
 						$filename = '/library/css/template/'.$slugTemplate.'.css';
 						if(file_exists(get_template_directory() . $filename)) {
