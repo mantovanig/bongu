@@ -8,18 +8,19 @@ var gulp = require( 'gulp' ),
     svgToSss = require('gulp-svg-to-css'),
     sass = require( 'gulp-sass' ),
     sourcemaps = require('gulp-sourcemaps'),
+    eslint = require('gulp-eslint'),
     autoprefixer = require('gulp-autoprefixer');
 
-  var onError = function( err ) {
-    console.log( 'An error occurred:', err.message );
-    notify.onError("ERROR: " + err.plugin)(err);
-    this.emit( 'end' );
-  }
+var onError = function( err ) {
+  console.log( 'An error occurred:', err.message );
+  notify.onError("ERROR: " + err.plugin)(err);
+  this.emit( 'end' );
+}
 
-  // ... variables
-  var autoprefixerOptions = {
-    browsers: ['last 2 versions', '> 1%', 'Firefox ESR']
-  };
+// ... variables
+var autoprefixerOptions = {
+  browsers: ['last 2 versions', '> 1%', 'Firefox ESR']
+};
 
 gulp.task( 'build-svg', function() {
   return gulp.src('**/*.svg', {cwd: './library/svg'})
@@ -41,6 +42,23 @@ gulp.task('lint-scss', function lintCssTask() {
             }
       ]
     }));
+});
+
+gulp.task('lint-js', () => {
+    // ESLint ignores files with "node_modules" paths.
+    // So, it's best to have gulp ignore the directory as well.
+    // Also, Be sure to return the stream from the task;
+    // Otherwise, the task may end before the stream has finished.
+    return gulp.src(['./library/js/*.js','!node_modules/**'])
+        // eslint() attaches the lint output to the "eslint" property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint())
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failAfterError last.
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task( 'scss', function() {
@@ -80,11 +98,13 @@ gulp.task( 'scss-minify', function() {
       .pipe( gulp.dest( './library/css/min/' ) )
 } );
 
+
 gulp.task( 'watch', function() {
-  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss', 'scss-template', 'scss-minify' ] );
+  gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'lint-js', 'scss', 'scss-template', 'scss-minify' ] );
+  gulp.watch( './library/js/*.js' , [ 'lint-js' ] );
   // gulp.watch( './**/*.php' ).on( 'change', function( file ) { } );
 } );
 
-gulp.task( 'default', ['build-svg', 'lint-scss', 'scss', 'scss-template', 'scss-minify', 'watch' ], function() {
+gulp.task( 'default', ['build-svg', 'lint-scss', 'lint-js', 'scss', 'scss-template', 'scss-minify', 'watch' ], function() {
 
 } );
