@@ -4,13 +4,19 @@
 
 
 .header {
-	background-color: $blue;
+	background-color: $bongu-color;
 }
 
 	#logo {
 		margin: 0.75em 0;
+    width: 128px;
+    height: 75px;
 
 		a {
 			color: $white;
 		}
 	}
+
+  #titleDescription {
+    color: $white;
+  }
