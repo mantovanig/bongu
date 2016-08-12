@@ -121,8 +121,17 @@ SCRIPTS & ENQUEUEING
 function bones_scripts_and_styles() {
 
   global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
+	$_devState = 'dev';
+	$_prodState = 'prod';
 
-	$env = BONGU_ENV;
+	if(!defined('BONGU_ENV')){
+		$env = $_devState;
+	} else {
+		$env = BONGU_ENV;
+		if($env == '') {
+			$env = $_devState;
+		}
+	}
 
 	$template = basename( get_page_template() );
 	$pattern = '/template-(.*)\./';
@@ -137,7 +146,7 @@ function bones_scripts_and_styles() {
 		// register icons stylesheet
 		wp_register_style( 'svg', get_stylesheet_directory_uri() . '/library/css/icons/svg.css', array(), '', 'all' );
 
-		if($env == 'prod') {
+		if($env == $_prodState) {
 
 				// register main stylesheet
 				wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/min/style.min.css', array(), '', 'all' );
@@ -145,7 +154,7 @@ function bones_scripts_and_styles() {
 				// ie-only style sheet
 				wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/min/ie.min.css', array(), '' );
 
-		} elseif($env == 'dev') {
+		} else {
 
 				// register main stylesheet
 				wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
