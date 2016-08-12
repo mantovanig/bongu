@@ -1,6 +1,6 @@
 # Bongu
 
-Bongu is a Wordpress StarterKit based on [Bones starter theme](https://github.com/eddiemachado/bones) that reduces the time and effort to setup and build a wordpress website.
+Bongu is a Wordpress StarterKit based on [Bones starter theme](https://github.com/eddiemachado/bones) (i'm a fan of Bones! :smile: ) that reduces the time and effort to setup and build a wordpress website.
 
 It is focused on making you, the developer, as productive as possible by doing all the common, repetitive, yet essential, tasks involved in most web development projects, this with Gulp task and other small features.
 
