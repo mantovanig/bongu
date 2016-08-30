@@ -82,7 +82,7 @@ gulp.task( 'scss-template', function() {
     .pipe( sass() )
     .pipe(sourcemaps.write('./maps/'))
     .pipe(autoprefixer(autoprefixerOptions))
-    .pipe( gulp.dest( './library/css/template/' ) )
+    .pipe( gulp.dest( './library/css/' ) )
     .pipe(notify({
         onLast: true,
         message: function(file) {

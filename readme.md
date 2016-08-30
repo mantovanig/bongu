@@ -48,6 +48,7 @@ define('BONGU_ENV', 'dev');
 The possible value are: `prod` and `dev`
 
 # TO DO
+- Implement nucleus for style guide generator
 - Improve SVG workflow, i'm not sure that gulp-svg-to-css is the best solution
 - Improve resource loading function
 - Implement browserify
