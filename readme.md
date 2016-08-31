@@ -2,7 +2,7 @@
 
 Bongu is a Wordpress StarterKit based on [Bones starter theme](https://github.com/eddiemachado/bones) (i'm a fan of Bones! :smile: ) that reduces the time and effort to setup and build a wordpress website.
 
-It is focused on making you, the developer, as productive as possible by doing all the common, repetitive, yet essential, tasks involved in most web development projects, this with Gulp task and other small features.
+It is focused on making you, the developer, as productive as possible by doing all the common, repetitive, yet essential, tasks involved in most web development projects, this with [Gulp](https://github.com/gulpjs/gulp) task and other small features.
 
 # Installation
 
@@ -48,7 +48,6 @@ define('BONGU_ENV', 'dev');
 The possible value are: `prod` and `dev`
 
 # TO DO
-- Implement nucleus for style guide generator
 - Improve SVG workflow, i'm not sure that gulp-svg-to-css is the best solution
 - Improve resource loading function
 - Implement browserify
