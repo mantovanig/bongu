@@ -4,9 +4,6 @@
 		"browser": true
 	},
     "globals": {
-        "$M": true,
-        "$Y": true,
-        "yTos": true,
         "jQuery": true,
         "$": true
     },
