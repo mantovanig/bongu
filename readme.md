@@ -4,6 +4,9 @@ Bongu is a Wordpress StarterKit based on [Bones starter theme](https://github.co
 
 It is focused on making you, the developer, as productive as possible by doing all the common, repetitive, yet essential, tasks involved in most web development projects, this with [Gulp](https://github.com/gulpjs/gulp) task and other small features.
 
+Library included:
+- [Materialize](http://materializecss.com/) - With partial sass to include only the components that you need.
+
 # Installation
 
 1. Ensure that [Node.js](http://nodejs.org/) are installed.
@@ -48,6 +51,7 @@ define('BONGU_ENV', 'dev');
 The possible value are: `prod` and `dev`
 
 # TO DO
+- Implement Webpack
+- Include slickJS for carousel
 - Improve SVG workflow, i'm not sure that gulp-svg-to-css is the best solution
 - Improve resource loading function
-- Implement browserify
