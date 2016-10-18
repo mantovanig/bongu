@@ -5,7 +5,7 @@ Bongu is a Wordpress StarterKit based on [Bones starter theme](https://github.co
 It is focused on making you, the developer, as productive as possible by doing all the common, repetitive, yet essential, tasks involved in most web development projects, this with [Gulp](https://github.com/gulpjs/gulp) task and other small features.
 
 Library included:
-- [Materialize](http://materializecss.com/) - With partial sass to include only the components that you need.
+- [Materialize](http://materializecss.com/) - With partials sass files to include only the components that you need.
 
 # Installation
 
