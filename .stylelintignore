@@ -5,3 +5,4 @@ library/scss/breakpoints/_768up.scss
 library/scss/breakpoints/_481up.scss
 library/scss/editor-style.scss
 library/scss/breakpoints/_1030up.scss
+library/scss/vendor/

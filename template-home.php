@@ -21,6 +21,23 @@
 
 						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
+							<div class="row">
+								<div class="col s12 m6">
+									<div class="card blue-grey darken-1">
+										<div class="card-content white-text">
+											<span class="card-title">Materialize ready!</span>
+											<p>I am a very simple card. I am good at containing small bits of information.
+											I am convenient because I require little markup to use effectively.</p>
+										</div>
+										<div class="card-action">
+											<a href="#">This is a link</a>
+											<!-- <a href="#">This is a link</a> -->
+											<a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
@@ -36,6 +53,7 @@
 								</header> <?php // end article header ?>
 
 								<section class="entry-content cf" itemprop="articleBody">
+
 									<?php
 										// the content (pretty self explanatory huh)
 										the_content();
