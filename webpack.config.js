@@ -8,6 +8,7 @@ module.exports = {
       preLoaders: [
           {
             test: /\.jsx?$/,
+            exclude: /libs/,
             loaders: ['eslint']
           }
       ],

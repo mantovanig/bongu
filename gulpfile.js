@@ -132,7 +132,7 @@ gulp.task( 'scss-minify', function() {
 
 gulp.task( 'watch', function() {
   gulp.watch( './library/scss/**/*.scss', [ 'lint-scss', 'scss', 'scss-template', 'scss-minify' ] );
-  gulp.watch( './library/js/*.js' , ['webpack:build-dev'] );
+  gulp.watch( './library/js/**/*.js' , ['webpack:build-dev'] );
   // gulp.watch( './**/*.php' ).on( 'change', function( file ) { } );
 } );
 

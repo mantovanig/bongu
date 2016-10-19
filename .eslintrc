@@ -1,4 +1,6 @@
 {
+  "parser": "babel-eslint",
+  "parserOptions": { "sourceType": "module" },
 	"root": true,
 	"env": {
 		"browser": true
@@ -21,15 +23,15 @@
 		"no-class-assign": [
 			2
 		],
-		"no-console": [
-			1
-		],
 		"no-const-assign": [
 			2
 		],
 		"no-debugger": [
 			1
 		],
+    "no-console": [
+      "warn"
+    ],
 		"no-dupe-class-members": [
 			2
 		],
@@ -66,7 +68,7 @@
 			}
 		],
 		"no-invalid-this": [
-			2
+			1
 		],
 		"no-label-var": [
 			1
@@ -182,14 +184,13 @@
 				"after": true
 			}
 		],
-		"space-after-keywords": [
-			1,
-			"never"
-		],
-		"space-before-keyiwords": [
-			0,
-			"always"
-		],
+    "keyword-spacing": [
+      "warn",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
 		"strict": [
 			2
 		],
