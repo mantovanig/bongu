@@ -7,16 +7,35 @@
 	background-color: $bongu-color;
 }
 
-	#logo {
-		margin: 0.75em 0;
-    width: 128px;
-    height: 75px;
+#logo {
+	margin: 0.75em 0;
+  width: 128px;
+  height: 75px;
 
-		a {
-			color: $white;
-		}
+	a {
+		color: $white;
 	}
+}
 
-  #titleDescription {
-    color: $white;
-  }
+#titleDescription {
+  color: $white;
+}
+
+#downloadLogo {
+	width: 40%;
+
+	.modal-content {
+		text-align: center;
+
+		.icon {
+			width: 120px;
+			height: 120px;
+			margin: 15px auto;
+		}
+
+		a.btn {
+			margin-top: 20px;
+		}
+
+	}
+}

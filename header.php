@@ -51,9 +51,20 @@
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 					<div class="svg-Logo_Bongu" id="logo"></div>
 
+					<!-- Modal Structure -->
+					<div id="downloadLogo" class="modal">
+						<div class="modal-content">
+							<div class="icon svg-cloud-computing"></div>
+							<a href="<?php echo get_template_directory_uri(); ?>/library/images/Logo_Bongu.zip" class="waves-effect waves-light btn" download>DOWNLOAD LOGO</a>
+						</div>
+						<div class="modal-footer">
+							<a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+						</div>
+					</div>
+
 					<?php // if you'd like to use the site description you can un-comment it below ?>
 					<?php //bloginfo('description'); ?>
-					<p id="titleDescription">Just another Wordpress StarterKit Theme</p>
+					<p id="titleDescription">Right click on logo to download!</p>
 
 
 					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
