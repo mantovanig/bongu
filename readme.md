@@ -1,6 +1,6 @@
 # Bongu
 
-![Banner of BONGU](/library/images/banner.jpg?style=centerme)
+![Banner of BONGU](/library/images/banner_1100.jpg?style=centerme)
 
 Bongu is a Wordpress StarterKit based on [Bones starter theme](https://github.com/eddiemachado/bones) (i'm a fan of Bones! :smile: ) that reduces the time and effort to setup and build a wordpress website.
 
